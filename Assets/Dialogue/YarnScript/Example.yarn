@@ -1,0 +1,13 @@
+﻿title: Example
+tags: Example
+---
+<<show_sprite DialogueSystem>>
+<<change_character DialogueSystem rat neutral>>
+Rat: Hi.
+    -> Option 1
+    -> Option 2 
+
+<<hide_sprite DialogueSystem>>
+<<hide_background DialogueSystem>>
+
+===
