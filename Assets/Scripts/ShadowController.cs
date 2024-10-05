@@ -9,11 +9,14 @@ public class ShadowController : MonoBehaviour
     public float countdownTime = 3f;
     public GameObject playerObject; // Reference to the player GameObject
     public Transform[] waypoints;   // Array of waypoints for the shadow to follow
+    public bool useRandomMovement = false; // Toggle between movement types
+    public float randomJumpInterval = 4f;  // Interval for random jumps
 
     private int currentWaypointIndex = 0;
     private bool isChasingPlayer = false;
     private bool countdownActive = false;
     private float countdown = 0f;
+    private float randomMovementTimer = 0f; // Timer for random waypoint jumps
     private PlayerController player; // Reference to the PlayerController script
 
     void Start()
@@ -37,8 +40,16 @@ public class ShadowController : MonoBehaviour
         }
         else
         {
-            // Follow the waypoint path
-            MoveAlongWaypoints();
+            if (useRandomMovement)
+            {
+                // Handle random waypoint jumping
+                RandomMovement();
+            }
+            else
+            {
+                // Follow the waypoint path
+                MoveAlongWaypoints();
+            }
         }
 
         if (countdownActive)
@@ -74,6 +85,25 @@ public class ShadowController : MonoBehaviour
         }
     }
 
+    void RandomMovement()
+    {
+        // Increment the random movement timer
+        randomMovementTimer += Time.deltaTime;
+
+        // If 4 seconds have passed, choose a new random waypoint
+        if (randomMovementTimer >= randomJumpInterval)
+        {
+            // Select a random waypoint index
+            int randomIndex = Random.Range(0, waypoints.Length);
+
+            // Move the shadow instantly to the random waypoint
+            transform.position = waypoints[randomIndex].position;
+
+            // Reset the timer
+            randomMovementTimer = 0f;
+        }
+    }
+
     void ChasePlayer()
     {
         // Move the shadow toward the player's position
@@ -96,5 +126,6 @@ public class ShadowController : MonoBehaviour
     {
         // Handle game over logic here
         Debug.Log("Game Over! The scientist caught you.");
+        // You can add additional game over logic such as restarting the game, showing a game over screen, etc.
     }
 }
