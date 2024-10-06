@@ -13,6 +13,6 @@ public class CharacterSelectManager : MonoBehaviour
     public void SelectCharacter(int index)
     {
         selectedCharacter = index;  // Set the selected character index
-        SceneManager.LoadScene("GameScene");  // Load the game scene after selection
+        SceneManager.LoadScene("SampleScene");  // Load the game scene after selection
     }
 }
