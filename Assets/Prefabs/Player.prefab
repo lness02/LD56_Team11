@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1554213498525834563}
   - component: {fileID: 6882292146480214238}
-  - component: {fileID: 8538806839204741666}
+  - component: {fileID: 6883517725425054096}
   - component: {fileID: 6114341471634941033}
   - component: {fileID: 4218646973262008290}
   - component: {fileID: 2475917040124501856}
-  - component: {fileID: 7027804120424335142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -740466334, guid: 53bcb5ab5eb5644208342ea971d8d15a, type: 3}
+  m_Sprite: {fileID: 1759541737, guid: 5b9f7e71b240e46dfb5056cce2d6f0a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,8 +88,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8538806839204741666
-BoxCollider2D:
+--- !u!70 &6883517725425054096
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,18 +121,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 3.875}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8, y: 3.875}
-  m_EdgeRadius: 0
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!50 &6114341471634941033
 Rigidbody2D:
   serializedVersion: 4
@@ -205,24 +194,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   mainCamera: {fileID: 0}
---- !u!95 &7027804120424335142
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945313413092706392}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3e5fac48a31cf4abdbb058854dbd6e6c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

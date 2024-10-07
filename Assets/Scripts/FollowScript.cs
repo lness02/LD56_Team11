@@ -8,7 +8,8 @@ public class FollowScript : MonoBehaviour
 
     public GameObject player;
     public float speed;
-    private bool shouldFollow = true;
+    public float noticeDistance = 4.0F;
+    private bool shouldFollow = false;
 
     private float distance;
     // Start is called before the first frame update
@@ -35,13 +36,14 @@ public class FollowScript : MonoBehaviour
                 transform.rotation = Quaternion.Euler(Vector3.forward * angle);
             }
         }
+        else if (distance <= noticeDistance) { shouldFollow = true; }
 
 
 
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+
         shouldFollow = true;
         Debug.Log("Hello World!");
 
