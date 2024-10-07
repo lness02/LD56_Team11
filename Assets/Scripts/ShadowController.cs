@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShadowController : MonoBehaviour
 {
     public float moveSpeed = 2f;
     public float chaseSpeed = 3.5f;
     public float countdownTime = 3f;
-    public GameObject playerObject; // Reference to the player GameObject
     public Transform[] waypoints;   // Array of waypoints for the shadow to follow
     public bool useRandomMovement = false; // Toggle between movement types
     public float randomJumpInterval = 4f;  // Interval for random jumps
@@ -18,16 +18,32 @@ public class ShadowController : MonoBehaviour
     private float countdown = 0f;
     private float randomMovementTimer = 0f; // Timer for random waypoint jumps
     private PlayerController player; // Reference to the PlayerController script
+    private GameObject playerObject;  // Reference to the player GameObject
+
+    // This method will be used by GameManager to assign the player
+    public void AssignPlayer(GameObject playerObj)
+    {
+        playerObject = playerObj;
+        player = playerObject.GetComponent<PlayerController>();
+    }
 
     void Start()
     {
-        // Get the PlayerController script from the player object
-        player = playerObject.GetComponent<PlayerController>();
-
         // Start at the first waypoint
         if (waypoints.Length > 0)
         {
             transform.position = waypoints[0].position;
+        }
+
+        // If player isn't assigned yet, try to find it (fallback for safety)
+        if (player == null)
+        {
+            PlayerController foundPlayer = FindObjectOfType<PlayerController>();
+            if (foundPlayer != null)
+            {
+                playerObject = foundPlayer.gameObject;
+                player = foundPlayer;
+            }
         }
     }
 
@@ -60,7 +76,7 @@ public class ShadowController : MonoBehaviour
             {
                 GameOver();
             }
-            else if (player.IsInSafeArea) // Check if player is in the safe area
+            else if (player != null && player.IsInSafeArea) // Check if player is in the safe area
             {
                 // Cancel countdown and return to waypoint movement
                 countdownActive = false;
@@ -107,7 +123,10 @@ public class ShadowController : MonoBehaviour
     void ChasePlayer()
     {
         // Move the shadow toward the player's position
-        transform.position = Vector2.MoveTowards(transform.position, playerObject.transform.position, chaseSpeed * Time.deltaTime);
+        if (playerObject != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, playerObject.transform.position, chaseSpeed * Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -124,8 +143,7 @@ public class ShadowController : MonoBehaviour
 
     void GameOver()
     {
-        // Handle game over logic here
+        SceneManager.LoadScene("GameOver");
         Debug.Log("Game Over! The scientist caught you.");
-        // You can add additional game over logic such as restarting the game, showing a game over screen, etc.
     }
 }

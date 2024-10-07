@@ -833,6 +833,11 @@ MonoBehaviour:
   - {fileID: 1945313413092706392, guid: ae2b1799d18994179b89fa87bfe19932, type: 3}
   - {fileID: 7768482199992282464, guid: bfecbab1d979c43db99ba7b108e456aa, type: 3}
   - {fileID: 1345059527895241189, guid: b9e62ac950afc40949d4ce2003a66731, type: 3}
+  skinButtons:
+  - {fileID: 612293879}
+  - {fileID: 41443251}
+  - {fileID: 828469228}
+  startGameButton: {fileID: 1942889959}
 --- !u!1 &1244574631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1133,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1942889960}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1217328523}
+        m_TargetAssemblyTypeName: CharacterSelectManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1942889960
 MonoBehaviour:
   m_ObjectHideFlags: 0
