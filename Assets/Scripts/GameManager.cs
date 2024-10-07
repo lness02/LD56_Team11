@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         // Get the main camera reference
         mainCamera = Camera.main;
 
-        int selectedAnimalIndex = PlayerPrefs.GetInt("SelectedAnimal", 0); // Default to the first animal
+        int selectedAnimalIndex = PlayerPrefs.GetInt("SelectedAnimal", 0); // Default to the first skin
         SpawnPlayer(selectedAnimalIndex);
 
         // Assign the player object to all ShadowController scripts
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         // Assign the player instance to each shadow
         foreach (ShadowController shadow in shadowControllers)
         {
-            shadow.AssignPlayer(playerInstance); // Use the AssignPlayer method
+            shadow.AssignPlayer(playerInstance); 
         }
     }
 
