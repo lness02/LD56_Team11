@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShadowController : MonoBehaviour
 {
@@ -127,5 +128,6 @@ public class ShadowController : MonoBehaviour
         // Handle game over logic here
         Debug.Log("Game Over! The scientist caught you.");
         // You can add additional game over logic such as restarting the game, showing a game over screen, etc.
+        SceneManager.LoadScene("GameOver");
     }
 }
