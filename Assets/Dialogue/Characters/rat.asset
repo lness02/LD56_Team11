@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7793b0e3c236bb4ba9f84d815ffb44a, type: 3}
   m_Name: rat
   m_EditorClassIdentifier: 
-  fullName: Rat
+  fullName: rat
   neutral: {fileID: 21300000, guid: 1853205cb8170c54d9c8e9b7660ffb51, type: 3}
